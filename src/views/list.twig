@@ -122,11 +122,13 @@
             <ul class="pagination">
                 <li{{ page == 0 ? ' class="disabled"' : ''}}><a href="{{ app.url_generator.generate('crudList', {'entity': crudEntity, 'crudPage': 0, 'crudSortField': sortField, 'crudSortAscending': sortAscendingStr ? 'true' : false}|merge(filterParams)) }}"><span aria-hidden="true">&laquo;</span><span class="sr-only">{{ 'crudlex.list.button.first'|trans }}</span></a></li>
                 <li{{ page == 0 ? ' class="disabled"' : ''}}><a href="{{ app.url_generator.generate('crudList', {'entity': crudEntity, 'crudPage': page > 0 ? page - 1 : 0, 'crudSortField': sortField, 'crudSortAscending': sortAscendingStr ? 'true' : false}|merge(filterParams)) }}"><span aria-hidden="true">&lsaquo;</span><span class="sr-only">{{ 'crudlex.list.button.previous'|trans }}</span></a></li>
+                <li>...</li>
                 {% for p in 0..maxPage %}
                     <li{{ p == page ? ' class="active"' : ''}}>
                         <a href="{{ app.url_generator.generate('crudList', {'entity': crudEntity, 'crudPage': p, 'crudSortField': sortField, 'crudSortAscending': sortAscendingStr ? 'true' : false}|merge(filterParams)) }}">{{ p + 1 }}</a>
                     </li>
                 {% endfor %}
+                <li>...</li>
                 <li{{ page == maxPage ? ' class="disabled"' : ''}}><a href="{{ app.url_generator.generate('crudList', {'entity': crudEntity, 'crudPage': page < maxPage ? page + 1 : maxPage, 'crudSortField': sortField, 'crudSortAscending': sortAscendingStr ? 'true' : false}|merge(filterParams)) }}"><span aria-hidden="true">&rsaquo;</span><span class="sr-only">{{ 'crudlex.list.button.next'|trans }}</span></a></li>
                 <li{{ page == maxPage ? ' class="disabled"' : ''}}><a href="{{ app.url_generator.generate('crudList', {'entity': crudEntity, 'crudPage': maxPage, 'crudSortField': sortField, 'crudSortAscending': sortAscendingStr ? 'true' : false}|merge(filterParams)) }}"><span aria-hidden="true">&raquo;</span><span class="sr-only">{{ 'crudlex.list.button.last'|trans }}</span></a></li>
             </ul>
